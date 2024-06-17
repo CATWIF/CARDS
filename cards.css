@@ -16,7 +16,7 @@ body {
 
 #board {
     width: 100%; /* Ancho completo del contenedor padre */
-    max-width: 500px; /* Ancho máximo del tablero */
+    max-width: 550px; /* Ancho máximo del tablero */
     margin: 0 auto; /* Centra el tablero horizontalmente */
     display: flex;
     flex-wrap: wrap;
