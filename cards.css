@@ -88,6 +88,8 @@ body {
 @media (max-width: 768px) {
     .card {
         height: calc(20vh - 20px); /* Altura relativa, ajustada al 20% del alto de la ventana */
-        max-height: 90px; /* Altura máxima para dispositivos móviles */
+        max-height: 90px;
+        width: calc(18vw - 20px); /* Ancho relativo, ajustado al 18% del ancho de la ventana */
+        max-width: 60px; /* Ancho máximo para dispositivos móviles */
     }
 }
