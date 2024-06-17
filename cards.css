@@ -1,40 +1,57 @@
 body {
-    background: linear-gradient(to bottom, #ef0fc2, #FFFFFF); /* Pastel pink to white gradient */
+    background: linear-gradient(to bottom, #ef0fc2, #FFFFFF); /* Gradiente de rosa pastel a blanco */
     background-size: cover;
-    font-family: Unbounded, Arial, Helvetica, sans-serif;
+    font-family: 'Unbounded', Arial, Helvetica, sans-serif;
+    margin: 0; /* Elimina el margen predeterminado */
+    padding: 0; /* Elimina el padding predeterminado */
+}
+
+.container {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 600px; /* Ancho máximo para evitar que sea demasiado grande en pantallas muy anchas */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 20px; /* Añade espacio alrededor del contenido */
+    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
 }
 
 #board {
-    width: 500px;
-    margin: 0 auto;
+    width: 100%; /* Ancho completo del contenedor padre */
+    max-width: 540px; /* Ancho máximo del tablero */
+    margin: 0 auto; /* Centra el tablero horizontalmente */
     display: flex;
     flex-wrap: wrap;
-    background-color: #FFFFFF; /* White background */
-    border: 10px solid #0d90e8; /* Pastel green border */
+    justify-content: center; /* Centra las cartas horizontalmente */
+    background-color: #FFFFFF; /* Fondo blanco */
+    border: 10px solid #0d90e8; /* Borde verde pastel */
+    padding: 10px;
 }
 
 .title {
     font-size: 3em;
     color: #19ed19;
     text-shadow: 2px 2px #ffb3ba;
+    text-align: center; /* Centra el texto */
 }
+
 .instructions {
     font-size: 1.2em;
     color: #000000;
     margin-top: 20px;
-    border: 1px ;
+    text-align: center; /* Centra el texto */
 }
+
 .errors {
     font-size: 1.5em;
     color: #ff0000;
     margin-top: 20px;
+    text-align: center; /* Centra el texto */
 }
 
 .card {
     height: 128px;
     width: 90px;
-    margin: 2.5px;
-    perspective: 1000px; /* Add perspective for 3D effect */
+    margin: 5px; /* Aumenta el margen entre las cartas para dispositivos más pequeños */
+    perspective: 1000px; /* Añade perspectiva para el efecto 3D */
 }
 
 .card-inner {
@@ -56,15 +73,15 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-size: cover; /* Ensure the background image covers the entire card */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la carta */
 }
 
 .card-front {
-    background-color: #79e589; /* Pastel peach */
+    background-color: #79e589; /* Durazno pastel */
     color: black;
 }
 
 .card-back {
-    background-color: #AEC6CF; /* Pastel blue */
+    background-color: #AEC6CF; /* Azul pastel */
     transform: rotateY(180deg);
 }
