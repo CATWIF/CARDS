@@ -1,22 +1,70 @@
 body {
-    background: url("./pokemon-bg.jpg");
+    background: linear-gradient(to bottom, #ef0fc2, #FFFFFF); /* Pastel pink to white gradient */
     background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+    font-family: Unbounded, Arial, Helvetica, sans-serif;
 }
 
 #board {
-    height: 532px;
-    width: 475px;
+    width: 500px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    background-color: whitesmoke;
-    border: 10px solid lightgrey;
+    background-color: #FFFFFF; /* White background */
+    border: 10px solid #0d90e8; /* Pastel green border */
+}
+
+.title {
+    font-size: 3em;
+    color: #19ed19;
+    text-shadow: 2px 2px #ffb3ba;
+}
+.instructions {
+    font-size: 1.2em;
+    color: #000000;
+    margin-top: 20px;
+    border: 1px ;
+}
+.errors {
+    font-size: 1.5em;
+    color: #ff0000;
+    margin-top: 20px;
 }
 
 .card {
     height: 128px;
     width: 90px;
     margin: 2.5px;
+    perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-size: cover; /* Ensure the background image covers the entire card */
+}
+
+.card-front {
+    background-color: #79e589; /* Pastel peach */
+    color: black;
+}
+
+.card-back {
+    background-color: #AEC6CF; /* Pastel blue */
+    transform: rotateY(180deg);
 }

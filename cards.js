@@ -1,4 +1,3 @@
-
 var errors = 0;
 var cardList = [
     "darkness",
@@ -13,11 +12,10 @@ var cardList = [
     "water"
 ]
 
-
 var cardSet;
 var board = [];
-var rows = 4;
-var columns =5;
+var rows = 4; // Set rows to 4
+var columns = 5; // Set columns to 5
 
 var card1Selected;
 var card2Selected;
@@ -28,12 +26,12 @@ window.onload = function() {
 }
 
 function shuffleCards() {
-    cardSet = cardList.concat(cardList); //two of each card
+    cardSet = cardList.concat(cardList); // two of each card
     console.log(cardSet);
-    //shuffle
+    // shuffle
     for (let i = 0; i < cardSet.length; i++) {
-        let j = Math.floor(Math.random() * cardSet.length); //get random index
-        //swap
+        let j = Math.floor(Math.random() * cardSet.length); // get random index
+        // swap
         let temp = cardSet[i];
         cardSet[i] = cardSet[j];
         cardSet[j] = temp;
@@ -42,21 +40,32 @@ function shuffleCards() {
 }
 
 function startGame() {
-    //arrange the board 4x5
+    // arrange the board 4x5
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c = 0; c < columns; c++) {
             let cardImg = cardSet.pop();
-            row.push(cardImg); //JS
+            row.push(cardImg); // JS
 
-            // <img id="0-0" class="card" src="water.jpg">
-            let card = document.createElement("img");
+            let card = document.createElement("div");
             card.id = r.toString() + "-" + c.toString();
-            card.src = cardImg + ".jpg";
             card.classList.add("card");
             card.addEventListener("click", selectCard);
-            document.getElementById("board").append(card);
 
+            let cardInner = document.createElement("div");
+            cardInner.classList.add("card-inner");
+
+            let cardFront = document.createElement("div");
+            cardFront.classList.add("card-front");
+
+            let cardBack = document.createElement("div");
+            cardBack.classList.add("card-back");
+            cardBack.style.backgroundImage = "url('" + cardImg + ".jpg')";
+
+            cardInner.appendChild(cardFront);
+            cardInner.appendChild(cardBack);
+            card.appendChild(cardInner);
+            document.getElementById("board").append(card);
         }
         board.push(row);
     }
@@ -66,45 +75,30 @@ function startGame() {
 }
 
 function hideCards() {
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++) {
-            let card = document.getElementById(r.toString() + "-" + c.toString());
-            card.src = "back.jpg";
-        }
-    }
+    let cards = document.querySelectorAll(".card-inner");
+    cards.forEach(card => {
+        card.classList.remove("flipped");
+    });
 }
 
 function selectCard() {
-
-    if (this.src.includes("back")) {
+    let cardInner = this.querySelector(".card-inner");
+    if (!cardInner.classList.contains("flipped")) {
         if (!card1Selected) {
             card1Selected = this;
-
-            let coords = card1Selected.id.split("-"); //"0-1" -> ["0", "1"]
-            let r = parseInt(coords[0]);
-            let c = parseInt(coords[1]);
-
-            card1Selected.src = board[r][c] + ".jpg";
-        }
-        else if (!card2Selected && this != card1Selected) {
+            cardInner.classList.add("flipped");
+        } else if (!card2Selected && this != card1Selected) {
             card2Selected = this;
-
-            let coords = card2Selected.id.split("-"); //"0-1" -> ["0", "1"]
-            let r = parseInt(coords[0]);
-            let c = parseInt(coords[1]);
-
-            card2Selected.src = board[r][c] + ".jpg";
+            cardInner.classList.add("flipped");
             setTimeout(update, 1000);
         }
     }
-
 }
 
 function update() {
-    //if cards aren't the same, flip both back
-    if (card1Selected.src != card2Selected.src) {
-        card1Selected.src = "back.jpg";
-        card2Selected.src = "back.jpg";
+    if (card1Selected.querySelector(".card-back").style.backgroundImage != card2Selected.querySelector(".card-back").style.backgroundImage) {
+        card1Selected.querySelector(".card-inner").classList.remove("flipped");
+        card2Selected.querySelector(".card-inner").classList.remove("flipped");
         errors += 1;
         document.getElementById("errors").innerText = errors;
     }

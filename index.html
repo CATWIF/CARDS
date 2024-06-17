@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pokemon Cards Match</title>
-        <link rel="stylesheet" href="cards.css">
-        <script src="cards.js"></script>
-    </head>
-
-    <body>
-        <h2>Errors: <span id="errors">0</span></h2>
-        <div id="board">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STINK MATCH</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="cards.css">
+    <script src="cards.js" defer></script>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="title my-4">STINK MATCH</h1>
+        <div id="board" class="d-flex flex-wrap justify-content-center"></div>
+        <h2 class="errors my-4">Errors: <span id="errors">0</span></h2>
+        <div class="instructions mt-4">
+            <h3>How to Play</h3>
+            <p>
+                Match the pairs of STINK cards. Click on a card to reveal it, and try to find its pair. 
+                If the cards do not match, they will flip back over. The game tracks the number of errors 
+                you make. Try to match all pairs with the fewest errors possible. Good luck!
+            </p>
         </div>
-    </body>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
