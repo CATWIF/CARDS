@@ -86,10 +86,15 @@ body {
     transform: rotateY(180deg);
 }
 @media (max-width: 768px) {
-    .card {
-        height: calc(20vh - 20px); /* Altura relativa, ajustada al 20% del alto de la ventana */
-        max-height: 50px;
-        width: calc(18vw - 20px); /* Ancho relativo, ajustado al 18% del ancho de la ventana */
-        max-width: 30px; /* Ancho máximo para dispositivos móviles */
-    }
-}
+    @media (max-width: 768px) {
+        #board {
+            grid-template-columns: repeat(5, 1fr); /* Cambiar a 4 columnas en dispositivos móviles */
+        }
+    
+        .card {
+            height: calc(22vh - 20px); /* Altura relativa, ajustada al 22% del alto de la ventana */
+            max-height: 70px; /* Altura máxima para dispositivos móviles */
+            width: calc(20vw - 20px); /* Ancho relativo, ajustado al 20% del ancho de la ventana */
+            max-width: 60px; /* Ancho máximo para dispositivos móviles */
+        }
+    }}
